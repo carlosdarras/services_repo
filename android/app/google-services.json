@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "547904131118",
+    "project_id": "services-repo-535bc",
+    "storage_bucket": "services-repo-535bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547904131118:android:66926041f2c852d1c38fbf",
+        "android_client_info": {
+          "package_name": "com.carlo.servieces.services_repo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrm7zbalKmXgrs2_dcBzm_F4m8xmBZX6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
