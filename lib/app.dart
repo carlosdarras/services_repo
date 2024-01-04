@@ -20,7 +20,7 @@ class App extends StatelessWidget {
             foregroundColor: Colors.black,
           ),
         ),
-        home: const LoginView(),
+        home:  LoginView(),
       );
     });
   }
