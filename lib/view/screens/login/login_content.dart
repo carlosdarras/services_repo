@@ -3,6 +3,7 @@ import 'package:services_repo/blocs/login/login_bloc.dart';
 
 import 'package:services_repo/view/common_widgets/action_button_with_icon.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
+import 'package:services_repo/view/screens/bottom_nav_bar/bottom_navigation_bar_view.dart';
 import 'package:services_repo/view/screens/home/home_view.dart';
 import 'package:services_repo/view/screens/register/register_view.dart';
 import 'package:services_repo/view/tools.dart';
@@ -49,7 +50,7 @@ class LoginContent extends StatelessWidget {
         const VerticalSpacing(5),
         ActionButton(
           onPressed: () {
-            navigateTo(context, const HomeView());
+            navigateTo(context, const BottomNavigationBarView());
           },
           text: "Login",
           fontWight: FontWeight.bold,

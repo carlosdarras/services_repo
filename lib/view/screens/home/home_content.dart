@@ -15,6 +15,7 @@ class HomeContent extends StatelessWidget {
             CircleAvatar(
               backgroundColor: AppColors.myGrey,
               radius: 20.sp,
+              backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrXSXb_jayac8vtbpTX_FYximkklGxSWZgA&usqp=CAU"),
             ),
             const HorizontalSpacing(2),
             const Column(
@@ -64,7 +65,11 @@ class HomeContent extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: Colors.grey),
+                          color: AppColors.myGrey,
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  "https://www.kia.com/content/dam/kwcms/gt/en/images/showroom/Niro-SG2-23MY/Features/safety/safety-01-HDA.jpg"))),
                     ),
                     const VerticalSpacing(0.5),
                     TextWidget(
@@ -101,6 +106,19 @@ class HomeContent extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.myGrey),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/plan.png",
+                    height: 10.h,
+                  ),
+                  const TextWidget(
+                    text: "Home",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ],
+              ),
             ),
             const HorizontalSpacing(2),
             Column(
@@ -111,6 +129,17 @@ class HomeContent extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: AppColors.myGrey),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/field.png",
+                        height: 10.h,
+                      ),
+                      const TextWidget(
+                          text: "Fields", fontWeight: FontWeight.bold),
+                    ],
+                  ),
                 ),
                 const VerticalSpacing(
                   2,
@@ -123,12 +152,50 @@ class HomeContent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                     color: AppColors.myGrey,
                   ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/car.png",
+                        height: 10.h,
+                      ),
+                      const TextWidget(
+                          text: "Cars", fontWeight: FontWeight.bold),
+                    ],
+                  ),
                 ),
+
               ],
             ),
+
           ],
         ),
         const VerticalSpacing(2),
+        SizedBox(
+          height: 30.h,
+          child: CarouselSlider(
+            items: List.generate(
+              5,
+                  (index) => Container(
+                width: 70.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    image: const DecorationImage(
+                      fit: BoxFit.cover,
+                      image:  NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRGwUzGOSuG2eZPpdlwBfKVzLnZhG22ysQzyori1rhvejUPrLjCbZVNmvbkhtBzEI3R9g&usqp=CAU"),
+                    )
+                ),
+              ),),
+            options: CarouselOptions(
+                height: 20.h,
+                enableInfiniteScroll: true,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                viewportFraction: 0.8
+
+            ),
+          ),
+        ),
       ],
     );
   }
