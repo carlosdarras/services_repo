@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:services_repo/view/common_widgets/navigations_types.dart';
+import 'package:services_repo/view/screens/home_services_section/home_services_view.dart';
 import 'package:services_repo/view/tools.dart';
 
 class HomeContent extends StatelessWidget {
@@ -15,7 +17,7 @@ class HomeContent extends StatelessWidget {
             CircleAvatar(
               backgroundColor: AppColors.myGrey,
               radius: 20.sp,
-              backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrXSXb_jayac8vtbpTX_FYximkklGxSWZgA&usqp=CAU"),
+              backgroundImage: const NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrXSXb_jayac8vtbpTX_FYximkklGxSWZgA&usqp=CAU"),
             ),
             const HorizontalSpacing(2),
             const Column(
@@ -25,7 +27,7 @@ class HomeContent extends StatelessWidget {
                   text: "Mohammed Rashed",
                   fontWeight: FontWeight.bold,
                 ),
-                TextWidget(text: "93489"),
+                TextWidget(text: "079656533"),
               ],
             ),
           ],
@@ -35,7 +37,7 @@ class HomeContent extends StatelessWidget {
           children: [
             TextWidget(
               text: "Cars To Rent",
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w900,
               fontSize: 14.sp,
             ),
             const Spacer(),
@@ -98,26 +100,37 @@ class HomeContent extends StatelessWidget {
           ),
         ),
         const VerticalSpacing(2),
+        TextWidget(
+          text: "Services",
+          fontWeight: FontWeight.w900,
+          fontSize: 14.sp,
+        ),
+        VerticalSpacing(1),
         Row(
           children: [
-            Container(
-              height: 30.h,
-              width: 45.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: AppColors.myGrey),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/plan.png",
-                    height: 10.h,
-                  ),
-                  const TextWidget(
-                    text: "Home",
-                    fontWeight: FontWeight.bold,
-                  ),
-                ],
+            InkWell(
+              onTap: (){
+                navigateTo(context, HomeServicesView());
+              },
+              child: Container(
+                height: 30.h,
+                width: 45.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: AppColors.myGrey),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/plan.png",
+                      height: 10.h,
+                    ),
+                    const TextWidget(
+                      text: "Home",
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ],
+                ),
               ),
             ),
             const HorizontalSpacing(2),
@@ -171,31 +184,35 @@ class HomeContent extends StatelessWidget {
           ],
         ),
         const VerticalSpacing(2),
-        SizedBox(
-          height: 30.h,
-          child: CarouselSlider(
-            items: List.generate(
-              5,
-                  (index) => Container(
-                width: 70.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image:  NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRGwUzGOSuG2eZPpdlwBfKVzLnZhG22ysQzyori1rhvejUPrLjCbZVNmvbkhtBzEI3R9g&usqp=CAU"),
-                    )
-                ),
-              ),),
-            options: CarouselOptions(
-                height: 20.h,
-                enableInfiniteScroll: true,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                viewportFraction: 0.8
+        TextWidget(
+          text: "Advertisements",
+          fontWeight: FontWeight.w900,
+          fontSize: 14.sp,
+        ),
+        VerticalSpacing(1),
+        CarouselSlider(
+          items: List.generate(
+            5,
+                (index) => Container(
+              width: 70.w,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image:  NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRGwUzGOSuG2eZPpdlwBfKVzLnZhG22ysQzyori1rhvejUPrLjCbZVNmvbkhtBzEI3R9g&usqp=CAU"),
+                  )
+              ),
+            ),),
+          options: CarouselOptions(
+              height: 20.h,
+              enableInfiniteScroll: true,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              viewportFraction: 0.8
 
-            ),
           ),
         ),
+        VerticalSpacing(5),
       ],
     );
   }
