@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:services_repo/blocs/login/login_bloc.dart';
 
-import 'package:services_repo/view/common_widgets/action_button_with_icon.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
 import 'package:services_repo/view/screens/bottom_nav_bar/bottom_navigation_bar_view.dart';
-import 'package:services_repo/view/screens/home/home_view.dart';
 import 'package:services_repo/view/screens/register/register_view.dart';
 import 'package:services_repo/view/tools.dart';
 
@@ -26,12 +24,12 @@ class LoginContent extends StatelessWidget {
         ),
         Center(
           child: TextWidget(
-            text: "Services App",
+            text: "MAPLE",
             fontWeight: FontWeight.w900,
             fontSize: 25.sp,
           ),
         ),
-        Image.asset(AppAssets.serviceScroll, height: 20.h),
+        Image.asset(AppAssets.logoNew, height: 20.h),
         const VerticalSpacing(5),
         TextWidget(
           text: "Email",
@@ -81,7 +79,7 @@ class LoginContent extends StatelessWidget {
             const Spacer(),
             CustomTextButtons(
               onPressed: () {},
-              text: "Forget Password",
+              text: "Forgot Password",
               textColor: Colors.grey,
             ),
           ],

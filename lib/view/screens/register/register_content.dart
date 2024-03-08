@@ -15,7 +15,7 @@ class RegisterContent extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       children: [
         TextWidget(
-          text: "Register Now!!",
+          text: "Register Now",
           fontSize: 22.sp,
           fontWeight: FontWeight.w900,
         ),
@@ -47,6 +47,7 @@ class RegisterContent extends StatelessWidget {
           controller: TextEditingController(),
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
+          hintText: "Username",
         ),
         const VerticalSpacing(2),
         TextWidget(
@@ -81,6 +82,7 @@ class RegisterContent extends StatelessWidget {
           controller: TextEditingController(),
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
+          hintText: "Enter code",
         ),
         VerticalSpacing(2),
         TextWidget(

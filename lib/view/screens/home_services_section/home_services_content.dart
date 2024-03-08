@@ -42,7 +42,7 @@ class HomeServicesContent extends StatelessWidget {
         Row(
           children: [
             TextWidget(
-              text: "Some of Plumping",
+              text: "Plumbing Services",
               fontWeight: FontWeight.w900,
               fontSize: 14.sp,
             ),
@@ -199,7 +199,7 @@ class HomeServicesContent extends StatelessWidget {
         Row(
           children: [
             TextWidget(
-              text: "Clean Your Home",
+              text: "Cleaning services",
               fontWeight: FontWeight.w900,
               fontSize: 14.sp,
             ),

@@ -9,7 +9,7 @@ class HomeServicesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const TextWidget(text: "Home Services",),
+        title: const TextWidget(text: "MAPLE Services",),
       ),
       body: HomeServicesContent(),
     );
