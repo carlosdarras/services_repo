@@ -4,4 +4,5 @@ class AppAssets {
   static const serviceScroll = "assets/images/customer-service.gif";
   static const googleIcon = "assets/images/google.png";
   static const logoNew = "assets/images/logo_new.jpeg";
+  static const plumbingIcon = "assets/images/plumber.png";
 }
