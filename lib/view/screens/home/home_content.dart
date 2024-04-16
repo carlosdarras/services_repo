@@ -37,12 +37,12 @@ class HomeContent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextWidget(
-                              text: "Mohammed Rashed",
+                              text: "Mohammed Rashid",
                               fontWeight: FontWeight.bold,
                               textColor: Colors.white,
                             ),
                             TextWidget(
-                              text: "079656533",
+                              text: "0797975052",
                               textColor: Colors.white,
                             ),
                           ],
