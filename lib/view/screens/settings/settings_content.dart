@@ -172,6 +172,24 @@ class SettingsContent extends StatelessWidget {
           child: const Row(
             children: [
               Icon(
+                Icons.contact_page_rounded,
+                color: AppColors.primaryColor,
+              ),
+              HorizontalSpacing(2),
+              TextWidget(text: "Contact us"),
+              Spacer(),
+              Icon(Icons.arrow_forward_ios_rounded),
+            ],
+          ),
+        ),
+        const VerticalSpacing(2),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.5.h),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: AppColors.myGrey),
+          child: const Row(
+            children: [
+              Icon(
                 Icons.account_balance_sharp,
                 color: AppColors.primaryColor,
               ),
