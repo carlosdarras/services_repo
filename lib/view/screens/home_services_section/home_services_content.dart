@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:services_repo/view/common_widgets/navigations_types.dart';
+import 'package:services_repo/view/screens/companies_section/companies_section_view.dart';
 import 'package:services_repo/view/tools.dart';
 
 
@@ -16,29 +18,29 @@ class HomeServicesContent extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 3.h),
       children: [
-        SizedBox(
-          height: 6.h,
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context,index){
-                return Container(
-                  height: 7.h,
-                  width: 40.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: AppColors.myGrey,
-                  ),
-                  child: Center(
-                    child:TextWidget(text: services[index],fontWeight: FontWeight.bold,),
-                  ),
-                );
-              },
-              separatorBuilder: (context,index)=>const HorizontalSpacing(2),
-              itemCount: 3,
-          ),
-        ),
-        const VerticalSpacing(3),
+        // SizedBox(
+        //   height: 6.h,
+        //   child: ListView.separated(
+        //     physics: const BouncingScrollPhysics(),
+        //       scrollDirection: Axis.horizontal,
+        //       itemBuilder: (context,index){
+        //         return Container(
+        //           height: 7.h,
+        //           width: 40.w,
+        //           decoration: BoxDecoration(
+        //             borderRadius: BorderRadius.circular(20),
+        //             color: AppColors.myGrey,
+        //           ),
+        //           child: Center(
+        //             child:TextWidget(text: services[index],fontWeight: FontWeight.bold,),
+        //           ),
+        //         );
+        //       },
+        //       separatorBuilder: (context,index)=>const HorizontalSpacing(2),
+        //       itemCount: 3,
+        //   ),
+        // ),
+        // const VerticalSpacing(3),
         Row(
           children: [
             TextWidget(
@@ -59,45 +61,50 @@ class HomeServicesContent extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return Container(
-                width: 40.w,
-                padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: AppColors.myGrey),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 13.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: AppColors.myGrey,
-                          image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://img.freepik.com/free-vector/plumber-plumbing-service-professional-repair-cleaning-bathroom-equipment-sewerage-systems-vector-illustration_613284-1913.jpg?size=626&ext=jpg&ga=GA1.2.926676624.1704345251&semt=ais"))),
-                    ),
-                    const VerticalSpacing(0.5),
-                    TextWidget(
-                      text: "Services Name",
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11.sp,
-                    ),
-                    TextWidget(
-                      text: "type",
-                      fontWeight: FontWeight.normal,
-                      fontSize: 10.sp,
-                      textColor: Colors.grey,
-                    ),
-                    TextWidget(
-                      text: "10 JOD ",
-                      fontWeight: FontWeight.normal,
-                      fontSize: 10.sp,
-                      textColor: AppColors.primaryColor,
-                    )
-                  ],
+              return InkWell(
+                onTap: (){
+                  navigateTo(context, const CompaniesSectionView());
+                },
+                child: Container(
+                  width: 40.w,
+                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: AppColors.myGrey),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 13.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: AppColors.myGrey,
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    "https://img.freepik.com/free-vector/plumber-plumbing-service-professional-repair-cleaning-bathroom-equipment-sewerage-systems-vector-illustration_613284-1913.jpg?size=626&ext=jpg&ga=GA1.2.926676624.1704345251&semt=ais"))),
+                      ),
+                      const VerticalSpacing(0.5),
+                      TextWidget(
+                        text: "Services Name",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 11.sp,
+                      ),
+                      TextWidget(
+                        text: "type",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 10.sp,
+                        textColor: Colors.grey,
+                      ),
+                      TextWidget(
+                        text: "10 JOD ",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 10.sp,
+                        textColor: AppColors.primaryColor,
+                      )
+                    ],
+                  ),
                 ),
               );
             },
@@ -105,7 +112,7 @@ class HomeServicesContent extends StatelessWidget {
             itemCount: 6,
           ),
         ),
-        VerticalSpacing(3),
+        const VerticalSpacing(3),
         CarouselSlider(
           items: List.generate(
             5,
@@ -128,7 +135,7 @@ class HomeServicesContent extends StatelessWidget {
 
           ),
         ),
-        VerticalSpacing(3),
+        const VerticalSpacing(3),
         Row(
           children: [
             TextWidget(
@@ -195,7 +202,7 @@ class HomeServicesContent extends StatelessWidget {
             itemCount: 6,
           ),
         ),
-        VerticalSpacing(3),
+        const VerticalSpacing(3),
         Row(
           children: [
             TextWidget(

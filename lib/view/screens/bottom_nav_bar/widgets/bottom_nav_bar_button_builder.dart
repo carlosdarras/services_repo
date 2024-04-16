@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:rive/rive.dart';
 import 'package:services_repo/blocs/bottom_navigation_bar/bottom_navigation_bar_bloc.dart';
-import 'package:services_repo/core/constance/rive_utils.dart';
+
 import 'package:services_repo/view/tools.dart';
 
 

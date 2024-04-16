@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:services_repo/view/common_widgets/navigations_types.dart';
+import 'package:services_repo/view/screens/home_services_section/home_services_view.dart';
 import 'package:services_repo/view/tools.dart';
 
 class HomeContent extends StatelessWidget {
@@ -52,7 +54,7 @@ class HomeContent extends StatelessWidget {
                           backgroundColor: AppColors.myGrey,
                           radius: 20.sp,
                           backgroundImage: const NetworkImage(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrXSXb_jayac8vtbpTX_FYximkklGxSWZgA&usqp=CAU"),
+                              "https://firebasestorage.googleapis.com/v0/b/services-repo-535bc.appspot.com/o/WhatsApp%20Image%202024-04-16%20at%209.48.05%20PM.jpeg?alt=media&token=b67bee69-34f9-4108-b46a-f8b6e55c2286"),
                         ),
                       ],
                     ),
@@ -267,7 +269,7 @@ class HomeContent extends StatelessWidget {
             items: [
               InkWell(
                 onTap: () {
-                  // navigateTo(context, const CarsSectionView());
+                  navigateTo(context, const HomeServicesView());
                 },
                 child: Stack(
                   children: [

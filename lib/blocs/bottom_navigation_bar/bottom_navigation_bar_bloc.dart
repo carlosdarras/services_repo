@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:services_repo/core/constance/rive_assets.dart';
+import 'package:services_repo/core/utils/rive_assets.dart';
 import 'package:services_repo/view/screens/home/home_view.dart';
 import 'package:services_repo/view/screens/settings/settings_view.dart';
 

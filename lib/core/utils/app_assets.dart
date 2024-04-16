@@ -5,4 +5,5 @@ class AppAssets {
   static const googleIcon = "assets/images/google.png";
   static const logoNew = "assets/images/logo_new.jpeg";
   static const plumbingIcon = "assets/images/plumber.png";
+  static const uploadImage = "assets/images/image-.png";
 }

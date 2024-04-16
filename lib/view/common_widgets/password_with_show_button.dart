@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:services_repo/core/constance/regex.dart';
 import 'package:services_repo/core/theme/app_colors.dart';
+import 'package:services_repo/view/tools.dart';
 
 class PasswordWithShowButton extends StatelessWidget {
   const PasswordWithShowButton(

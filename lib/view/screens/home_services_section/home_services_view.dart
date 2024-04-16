@@ -11,7 +11,7 @@ class HomeServicesView extends StatelessWidget {
       appBar: AppBar(
         title: const TextWidget(text: "MAPLE Services",),
       ),
-      body: HomeServicesContent(),
+      body: const HomeServicesContent(),
     );
   }
 }
