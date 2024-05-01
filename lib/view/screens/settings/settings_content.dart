@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:services_repo/view/common_widgets/navigations_types.dart';
+import 'package:services_repo/view/screens/my_requests/my_requests_view.dart';
 import 'package:services_repo/view/tools.dart';
 
 class SettingsContent extends StatelessWidget {
@@ -111,21 +111,27 @@ class SettingsContent extends StatelessWidget {
           ),
         ),
         const VerticalSpacing(2),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.5.h),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15), color: AppColors.myGrey),
-          child: const Row(
-            children: [
-              Icon(
-                Icons.request_page_outlined,
-                color: AppColors.primaryColor,
-              ),
-              HorizontalSpacing(2),
-              TextWidget(text: "My Requests"),
-              Spacer(),
-              Icon(Icons.arrow_forward_ios_rounded),
-            ],
+        InkWell(
+          onTap: () {
+            navigateTo(context, MyRequestsView());
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.5.h),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: AppColors.myGrey),
+            child: const Row(
+              children: [
+                Icon(
+                  Icons.request_page_outlined,
+                  color: AppColors.primaryColor,
+                ),
+                HorizontalSpacing(2),
+                TextWidget(text: "My Requests"),
+                Spacer(),
+                Icon(Icons.arrow_forward_ios_rounded),
+              ],
+            ),
           ),
         ),
         const VerticalSpacing(2),

@@ -25,13 +25,13 @@ class RequestDetailsView extends StatelessWidget {
                     image: NetworkImage(
                         "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29tcGFuaWVzfGVufDB8fDB8fHww"))),
           ),
-          VerticalSpacing(2),
+          const VerticalSpacing(2),
           TextWidget(
             text: "Service Name",
             fontSize: 20.sp,
             fontWeight: FontWeight.w900,
           ),
-          VerticalSpacing(0.4),
+          const VerticalSpacing(0.4),
           TextWidget(
             text: "Company Name",
             fontWeight: FontWeight.bold,
@@ -140,7 +140,35 @@ class RequestDetailsView extends StatelessWidget {
             ),
           ),
           const VerticalSpacing(2),
-
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: AppColors.myGrey),
+            child: Column(
+              children: [
+                Image.asset(
+                  AppAssets.uploadImage,
+                  height: 10.h,
+                  color: AppColors.primaryColor,
+                ),
+                const VerticalSpacing(1),
+                const TextWidget(
+                  text: "Click To Upload Image",
+                  textColor: Colors.grey,
+                ),
+              ],
+            ),
+          ),
+          const VerticalSpacing(2),
+          ActionButton(
+            onPressed: () {},
+            text: "Confirm",
+            fontWight: FontWeight.bold,
+            backgroundColor: AppColors.primaryColor,
+          ),
+          const VerticalSpacing(4),
         ],
       ),
     );

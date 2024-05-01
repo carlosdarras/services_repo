@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class TextWidget extends StatelessWidget {
-  const TextWidget(
+  const   TextWidget(
       {Key? key,
       required this.text,
       this.textColor,
