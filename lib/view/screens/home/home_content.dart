@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
+import 'package:services_repo/view/screens/football_fields_section/football_fields_section_view.dart';
 import 'package:services_repo/view/screens/home_services_section/home_services_view.dart';
 import 'package:services_repo/view/tools.dart';
 
@@ -325,7 +326,7 @@ class HomeContent extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  // navigateTo(context, const CarsSectionView());
+                  navigateTo(context, const FootballFieldsSectionView());
                 },
                 child: Stack(
                   children: [
@@ -391,164 +392,3 @@ class HomeContent extends StatelessWidget {
     );
   }
 }
-
-//ListView(
-//         padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 7.h),
-//         children: [
-//           Row(
-//             children: [
-//               const Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   TextWidget(
-//                     text: "Mohammed Rashed",
-//                     fontWeight: FontWeight.bold,
-//                     textColor: Colors.white,
-//                   ),
-//                   TextWidget(
-//                     text: "079656533",
-//                     textColor: Colors.white,
-//                   ),
-//                 ],
-//               ),
-//               const Spacer(),
-//               CircleAvatar(
-//                 backgroundColor: AppColors.myGrey,
-//                 radius: 20.sp,
-//                 backgroundImage: const NetworkImage(
-//                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrXSXb_jayac8vtbpTX_FYximkklGxSWZgA&usqp=CAU"),
-//               ),
-//             ],
-//           ),
-//           const VerticalSpacing(3),
-//           TextWidget(
-//             text: "Welcome to MAPLE",
-//             textColor: Colors.grey[300],
-//             fontSize: 11.sp,
-//           ),
-//           const VerticalSpacing(1),
-//           TextWidget(
-//             text: "Discover Our Services",
-//             textColor: Colors.white,
-//             fontSize: 14.sp,
-//             fontWeight: FontWeight.w900,
-//           ),
-//           const VerticalSpacing(2),
-//           TextFormField(
-//             controller: TextEditingController(),
-//             decoration: InputDecoration(
-//               contentPadding: EdgeInsets.symmetric(vertical: 1.6.h),
-//               filled: true,
-//               fillColor: Colors.grey.withOpacity(0.5),
-//               hintText: "Search Here...",
-//               hintStyle: TextStyle(color: Colors.white),
-//               prefixIcon: const Icon(
-//                 Icons.search,
-//                 color: Colors.white,
-//               ),
-//               enabledBorder: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(20),
-//                   borderSide: BorderSide.none,
-//                   gapPadding: 3.h),
-//               focusedBorder: OutlineInputBorder(
-//                 borderRadius: BorderRadius.circular(20),
-//                 borderSide: BorderSide.none,
-//                 gapPadding: 1.h,
-//               ),
-//             ),
-//           ),
-//           const VerticalSpacing(3),
-//           const TextWidget(
-//             text: "Popular Fields 🔥",
-//             fontWeight: FontWeight.bold,
-//             textColor: Colors.white,
-//           ),
-//           const VerticalSpacing(1),
-///
-//           SizedBox(
-//             height: 28.h,
-//             child: ListView.separated(
-//               physics: const BouncingScrollPhysics(),
-//               scrollDirection: Axis.horizontal,
-//               shrinkWrap: true,
-//               itemBuilder: (context, index) {
-//                 return Container(
-//                   width: 60.w,
-//                   padding:
-//                       EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(25),
-//                     color: Colors.white,
-//                   ),
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Container(
-//                         height: 15.h,
-//                         decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(30),
-//                             image: const DecorationImage(
-//                               fit: BoxFit.cover,
-//                               image: NetworkImage(
-//                                   "https://images.unsplash.com/photo-1556056504-5c7696c4c28d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vdGJhbGwlMjBmaWVsZHxlbnwwfHwwfHx8MA%3D%3D"),
-//                             )),
-//                       ),
-//                       const VerticalSpacing(0.7),
-//                       const TextWidget(
-//                         text: "Khalda Fields",
-//                         fontWeight: FontWeight.w800,
-//                       ),
-//                       const VerticalSpacing(0.7),
-//                       Row(
-//                         children: [
-//                           Icon(
-//                             Icons.calendar_month,
-//                             size: 12.sp,
-//                             color: Colors.deepOrange,
-//                           ),
-//                           const HorizontalSpacing(2),
-//                           TextWidget(
-//                             text: "every day",
-//                             fontSize: 10.sp,
-//                           ),
-//                         ],
-//                       ),
-//                       const VerticalSpacing(0.7),
-//                       Row(
-//                         children: [
-//                           Icon(
-//                             Icons.location_on,
-//                             size: 12.sp,
-//                             color: Colors.deepOrange,
-//                           ),
-//                           const HorizontalSpacing(2),
-//                           TextWidget(
-//                             text: "Khalda",
-//                             fontSize: 10.sp,
-//                           ),
-//                           const HorizontalSpacing(2),
-//                           const TextWidget(text: "|"),
-//                           const HorizontalSpacing(2),
-//                           Icon(
-//                             Icons.monetization_on,
-//                             size: 12.sp,
-//                             color: Colors.deepOrange,
-//                           ),
-//                           const HorizontalSpacing(2),
-//                           TextWidget(
-//                             text: "100 JD",
-//                             fontSize: 10.sp,
-//                           ),
-//                         ],
-//                       ),
-//                     ],
-//                   ),
-//                 );
-//               },
-//               separatorBuilder: (context, index) =>
-//                   const HorizontalSpacing(3),
-//               itemCount: 5,
-//             ),
-//           )
-//         ],
-//       ),

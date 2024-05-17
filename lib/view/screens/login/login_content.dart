@@ -15,7 +15,7 @@ class LoginContent extends StatelessWidget {
       children: [
         Center(
           child: TextWidget(
-            text: "Welcome To",
+            text: "Welcome to",
             fontSize: 15.sp,
             fontWeight: FontWeight.bold,
           ),
