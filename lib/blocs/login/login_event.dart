@@ -5,3 +5,4 @@ abstract class LoginEvent {}
 
 
 class LoginShowPassword extends LoginEvent{}
+class LoginStartProcessEvent extends LoginEvent{}

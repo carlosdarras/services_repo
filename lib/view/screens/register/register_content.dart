@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:services_repo/blocs/register/register_bloc.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
-
 import 'package:services_repo/view/tools.dart';
 
 class RegisterContent extends StatelessWidget {
@@ -12,7 +11,7 @@ class RegisterContent extends StatelessWidget {
     var bloc = BlocProvider.of<RegisterBloc>(context);
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 6.h),
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       children: [
         TextWidget(
           text: "Register Now",
@@ -44,7 +43,7 @@ class RegisterContent extends StatelessWidget {
         ),
         const VerticalSpacing(1),
         NamesFiled(
-          controller: TextEditingController(),
+          controller: bloc.nameController,
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
           hintText: "Username",
@@ -56,7 +55,7 @@ class RegisterContent extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
         EmailWithoutIcon(
-          controller: TextEditingController(),
+          controller: bloc.emailController,
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
         ),
@@ -68,39 +67,40 @@ class RegisterContent extends StatelessWidget {
         ),
         const VerticalSpacing(1),
         NumbersField(
-          controller: TextEditingController(),
+          controller: bloc.phoneNumberController,
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
         ),
         const VerticalSpacing(2),
         TextWidget(
-          text: "ZIP Code",
+          text: "Postel Code",
           fontSize: 14.sp,
           fontWeight: FontWeight.bold,
         ),
         NumbersField(
-          controller: TextEditingController(),
+          controller: bloc.postelCodeController,
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
           hintText: "Enter code",
         ),
-        VerticalSpacing(2),
+        const VerticalSpacing(2),
         TextWidget(
           text: "Password",
           fontSize: 14.sp,
           fontWeight: FontWeight.bold,
         ),
-        VerticalSpacing(1),
+        const VerticalSpacing(1),
         PasswordWithShowButton(
-          controller: TextEditingController(),
+          controller: bloc.passwordCodeController,
           bloc: bloc,
           focusedBorderRadius: 30,
           enabledBorderRadius: 30,
         ),
-        VerticalSpacing(2),
         const VerticalSpacing(2),
         ActionButton(
-          onPressed: () {},
+          onPressed: () {
+            bloc.add(RegisterEmailAndPasswordEvent());
+          },
         ),
         const VerticalSpacing(2),
         ActionButtonWithIcon(
@@ -118,7 +118,7 @@ class RegisterContent extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextWidget(text: "Already Have Account?"),
+            const TextWidget(text: "Already Have Account?"),
             CustomTextButtons(
               onPressed: () {
                 navigateBack(context);
