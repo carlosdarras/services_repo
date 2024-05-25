@@ -4,11 +4,12 @@ class UserInfoModel {
   String? name;
   String? email;
   String? phoneNumber;
-  String? postelCode;
+  num? postelCode;
   String? image;
 
-  UserInfoModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+  UserInfoModel.fromJson(Map<String, dynamic> json, String id) {
+    print('the dkdkdkdk ${json}');
+    id = id;
     uid = json['uid'];
     name = json['name'];
     email = json['email'];

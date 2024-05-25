@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:services_repo/data/models/user_info.dart';
 
 class RegisterRepository {
-  Future<void> register(
+  Future<UserInfoModel> register(
       {required String email,
       required String password,
       required String phoneNumber,
@@ -15,7 +16,7 @@ class RegisterRepository {
         email: email,
         password: password,
       );
-      registerUserInfo(
+      return await registerUserInfo(
         email: email,
         phoneNumber: phoneNumber,
         postelCode: postelCode,
@@ -29,12 +30,13 @@ class RegisterRepository {
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
       }
+      throw Exception(e.message);
     } catch (e) {
-      print(e);
+      throw Exception(e.toString());
     }
   }
 
-  Future<void> registerUserInfo(
+  Future<UserInfoModel> registerUserInfo(
       {required String email,
       required User user,
       required String phoneNumber,
@@ -42,19 +44,28 @@ class RegisterRepository {
       required String name,
       String? image}) async {
     print('we enter to save info method');
-    CollectionReference users = FirebaseFirestore.instance.collection("users");
-    users.add({
-      'name': name, // John Doe
-      'email': email, // Stokes and Sons
-      'phoneNumber': phoneNumber,
-      'postelCode': postelCode,
-      'uid': user.uid,
-      if (image != null) 'image': image,
-    }).then((value) {
-      print('the value we have is is $value');
-      print('the value we have is is ${value.id}');
-    }).catchError((error) {
-      print('the error isisisi ${error}');
-    });
+    try {
+      CollectionReference users =
+          FirebaseFirestore.instance.collection("users");
+
+      var userInfo = await users.add({
+        'name': name, // John Doe
+        'email': email, // Stokes and Sons
+        'phoneNumber': phoneNumber,
+        'postelCode': postelCode,
+        'uid': user.uid,
+        if (image != null) 'image': image,
+      });
+      return UserInfoModel.fromJson({
+        'name': name, // John Doe
+        'email': email, // Stokes and Sons
+        'phoneNumber': phoneNumber,
+        'postelCode': postelCode,
+        'uid': user.uid,
+        if (image != null) 'image': image,
+      }, userInfo.id);
+    } on FirebaseException catch (e) {
+      throw Exception(e.message);
+    }
   }
 }

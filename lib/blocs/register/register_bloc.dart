@@ -1,13 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:services_repo/blocs/main/main_bloc.dart';
 import 'package:services_repo/data/repositories/register_repo.dart';
 
 part 'register_event.dart';
-
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  RegisterBloc(this.registerRepository) : super(RegisterInitial()) {
+  RegisterBloc(this.registerRepository, this.mainBloc)
+      : super(RegisterInitial()) {
     on<RegisterEmailAndPasswordEvent>(_onRegisterEmailAndPasswordEvent);
   }
 
@@ -15,6 +16,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   bool hiddenPassword = true;
 
+  MainBloc mainBloc;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
@@ -27,7 +29,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   ) async {
     emit(RegisterStartProcessLoadingState());
     try {
-      registerRepository.register(
+      mainBloc.userInfoModel = await registerRepository.register(
         email: emailController.text,
         password: passwordCodeController.text,
         image: "",

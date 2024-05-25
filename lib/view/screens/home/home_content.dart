@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:services_repo/blocs/main/main_bloc.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
 import 'package:services_repo/view/screens/football_fields_section/football_fields_section_view.dart';
 import 'package:services_repo/view/screens/home_services_section/home_services_view.dart';
@@ -10,6 +11,7 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mainBloc = context.read<MainBloc>();
     return ListView(
       padding: EdgeInsets.zero,
       children: [
@@ -36,16 +38,16 @@ class HomeContent extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Column(
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextWidget(
-                              text: "Mohammed Rashid",
+                              text: mainBloc.userInfoModel!.name!,
                               fontWeight: FontWeight.bold,
                               textColor: Colors.white,
                             ),
                             TextWidget(
-                              text: "0797975052",
+                              text: mainBloc.userInfoModel!.phoneNumber!,
                               textColor: Colors.white,
                             ),
                           ],
@@ -54,8 +56,8 @@ class HomeContent extends StatelessWidget {
                         CircleAvatar(
                           backgroundColor: AppColors.myGrey,
                           radius: 20.sp,
-                          backgroundImage: const NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/services-repo-535bc.appspot.com/o/WhatsApp%20Image%202024-04-16%20at%209.48.05%20PM.jpeg?alt=media&token=b67bee69-34f9-4108-b46a-f8b6e55c2286"),
+                          backgroundImage:
+                              NetworkImage(mainBloc.userInfoModel!.image!),
                         ),
                       ],
                     ),
@@ -135,7 +137,7 @@ class HomeContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: 15.h,
+                            height: 14.h,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                                 image: const DecorationImage(
