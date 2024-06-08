@@ -16,6 +16,7 @@ class RegisterRepository {
         email: email,
         password: password,
       );
+      print('hte ddddd ${credential}');
       return await registerUserInfo(
         email: email,
         phoneNumber: phoneNumber,

@@ -10,6 +10,7 @@ class LoginRepository {
           .signInWithEmailAndPassword(email: email, password: password);
       return await getUserInfo(credential.user!.uid);
     } on FirebaseAuthException catch (e) {
+      print('hte ddkdkdk ${e.message}');
       if (e.code == 'user-not-found') {
         throw Exception(e.message);
       } else if (e.code == 'wrong-password') {

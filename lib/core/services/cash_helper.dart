@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+String userId = "";
 class CashHelper {
   static late SharedPreferences sharedPreferences;
 

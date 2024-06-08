@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:services_repo/blocs/football_bloc/football_bloc.dart';
+import 'package:services_repo/blocs/home_services_section/home_services_section_bloc.dart';
 import 'package:services_repo/blocs/main/main_bloc.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
 import 'package:services_repo/view/screens/football_fields_section/football_fields_section_view.dart';
@@ -12,6 +14,9 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mainBloc = context.read<MainBloc>();
+    var footballBloc = context.read<FootballBloc>();
+    var footballBlocListener = context.watch<FootballBloc>();
+    var homeServiceBloc = context.read<HomeServicesSectionBloc>();
     return ListView(
       padding: EdgeInsets.zero,
       children: [
@@ -140,15 +145,15 @@ class HomeContent extends StatelessWidget {
                             height: 14.h,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
-                                image: const DecorationImage(
+                                image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      "https://images.unsplash.com/photo-1556056504-5c7696c4c28d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vdGJhbGwlMjBmaWVsZHxlbnwwfHwwfHx8MA%3D%3D"),
+                                  image: NetworkImage(footballBloc
+                                      .footballFieldModel[index].image!),
                                 )),
                           ),
                           const VerticalSpacing(0.7),
-                          const TextWidget(
-                            text: "Khalda Fields",
+                          TextWidget(
+                            text: footballBloc.footballFieldModel[index].name!,
                             fontWeight: FontWeight.w800,
                           ),
                           const VerticalSpacing(0.7),
@@ -161,7 +166,8 @@ class HomeContent extends StatelessWidget {
                               ),
                               const HorizontalSpacing(2),
                               TextWidget(
-                                text: "every day",
+                                text: footballBloc
+                                    .footballFieldModel[index].workingHours!,
                                 fontSize: 10.sp,
                               ),
                             ],
@@ -175,9 +181,14 @@ class HomeContent extends StatelessWidget {
                                 color: Colors.deepOrange,
                               ),
                               const HorizontalSpacing(2),
-                              TextWidget(
-                                text: "Khalda",
-                                fontSize: 10.sp,
+                              SizedBox(
+                                width: 15.w,
+                                child: TextWidget(
+                                  text: footballBloc
+                                      .footballFieldModel[index].location!,
+                                  fontSize: 10.sp,
+
+                                ),
                               ),
                               const HorizontalSpacing(2),
                               const TextWidget(text: "|"),
@@ -189,7 +200,8 @@ class HomeContent extends StatelessWidget {
                               ),
                               const HorizontalSpacing(2),
                               TextWidget(
-                                text: "100 JD",
+                                text:
+                                    "${footballBloc.footballFieldModel[index].minPrice} - ${footballBloc.footballFieldModel[index].maxPrice} JD",
                                 fontSize: 10.sp,
                               ),
                             ],
@@ -200,7 +212,7 @@ class HomeContent extends StatelessWidget {
                   },
                   separatorBuilder: (context, index) =>
                       const HorizontalSpacing(3),
-                  itemCount: 3,
+                  itemCount:footballBloc.footballFieldModel.length,
                 ),
               ),
             ),
@@ -247,7 +259,7 @@ class HomeContent extends StatelessWidget {
                     ),
                     const HorizontalSpacing(2),
                     TextWidget(
-                      text: "Plumbing",
+                      text: homeServiceBloc.categories[index].name!,
                       fontWeight: FontWeight.bold,
                       fontSize: 11.sp,
                     ),
@@ -256,7 +268,7 @@ class HomeContent extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) => const HorizontalSpacing(3),
-            itemCount: 4,
+            itemCount: homeServiceBloc.categories.length,
           ),
         ),
         const VerticalSpacing(2),

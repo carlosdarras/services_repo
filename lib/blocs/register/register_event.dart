@@ -6,3 +6,5 @@ abstract class RegisterEvent {}
 class RegisterEmailAndPasswordEvent extends RegisterEvent{
 
 }
+
+class UploadImage extends RegisterEvent {}

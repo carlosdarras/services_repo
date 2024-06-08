@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:services_repo/blocs/football_bloc/football_bloc.dart';
+import 'package:services_repo/blocs/main/main_bloc.dart';
 import 'package:services_repo/view/common_widgets/navigations_types.dart';
 import 'package:services_repo/view/screens/field_details/fields_details_view.dart';
 import 'package:services_repo/view/tools.dart';
@@ -9,6 +11,8 @@ class FootballFieldsSectionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mainBloc = context.read<MainBloc>();
+    var fieldBloc = context.read<FootballBloc>();
     return ListView(
       // padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 2.h),
       padding: EdgeInsets.zero,
@@ -43,35 +47,34 @@ class FootballFieldsSectionContent extends StatelessWidget {
                     width: 0,
                   ),
                   Text(
-                    "Mohammad",
+                    mainBloc.userInfoModel!.name!,
                     style: GoogleFonts.openSans().copyWith(
                         color: Colors.white,
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "Rashed",
-                    style: GoogleFonts.openSans().copyWith(
-                        color: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  // Text(
+                  //   "Rashed",
+                  //   style: GoogleFonts.openSans().copyWith(
+                  //       color: Colors.white,
+                  //       fontSize: 20.sp,
+                  //       fontWeight: FontWeight.bold),
+                  // ),
                 ],
               ),
               const Spacer(),
               Container(
                 height: 20.h,
                 width: 25.w,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(50),
                     topRight: Radius.circular(50),
                   ),
                   color: Colors.white,
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "https://firebasestorage.googleapis.com/v0/b/services-repo-535bc.appspot.com/o/WhatsApp%20Image%202024-04-16%20at%209.48.05%20PM.jpeg?alt=media&token=b67bee69-34f9-4108-b46a-f8b6e55c2286"),
+                    image: NetworkImage(mainBloc.userInfoModel!.image!),
                   ),
                 ),
               )
@@ -86,7 +89,11 @@ class FootballFieldsSectionContent extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                navigateTo(context, FieldsDetailsView());
+                navigateTo(
+                    context,
+                    FieldsDetailsView(
+                      footballFieldModel: fieldBloc.footballFieldModel[index],
+                    ));
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -103,29 +110,28 @@ class FootballFieldsSectionContent extends StatelessWidget {
                     Container(
                       height: 15.h,
                       width: double.infinity,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(25),
                           topLeft: Radius.circular(25),
                         ),
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                              "https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=3257&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                              fieldBloc.footballFieldModel[index].image!),
                         ),
                         color: Colors.white,
                       ),
                     ),
                     const VerticalSpacing(1),
                     TextWidget(
-                      text: "Jordan University Fields",
+                      text: fieldBloc.footballFieldModel[index].name!,
                       fontWeight: FontWeight.bold,
                       fontSize: 14.sp,
                     ),
                     const VerticalSpacing(0.5),
                     TextWidget(
-                      text:
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                      text: fieldBloc.footballFieldModel[index].description!,
                       maxLines: 2,
                       fontSize: 10.sp,
                       textColor: Colors.grey,
@@ -138,20 +144,22 @@ class FootballFieldsSectionContent extends StatelessWidget {
                           size: 12.sp,
                           color: Colors.deepOrange,
                         ),
-                        HorizontalSpacing(1),
+                        const HorizontalSpacing(1),
                         TextWidget(
-                          text: "9:00 AM - 9:00 PM",
+                          text:
+                              "${fieldBloc.footballFieldModel[index].openHours} - ${fieldBloc.footballFieldModel[index].closeHours}",
                           fontSize: 10.sp,
                         ),
-                        TextWidget(text: " | "),
+                        const TextWidget(text: " | "),
                         Icon(
                           Icons.monetization_on,
                           size: 12.sp,
                           color: Colors.deepOrange,
                         ),
-                        HorizontalSpacing(1),
+                        const HorizontalSpacing(1),
                         TextWidget(
-                          text: "25 - 70 JOD",
+                          text:
+                              "${fieldBloc.footballFieldModel[index].minPrice} - ${fieldBloc.footballFieldModel[index].maxPrice} JOD",
                           fontSize: 10.sp,
                         ),
                       ],
@@ -164,9 +172,9 @@ class FootballFieldsSectionContent extends StatelessWidget {
                           size: 12.sp,
                           color: Colors.deepOrange,
                         ),
-                        HorizontalSpacing(1),
+                        const HorizontalSpacing(1),
                         TextWidget(
-                          text: "Khalda",
+                          text: fieldBloc.footballFieldModel[index].location!,
                           fontSize: 10.sp,
                         ),
                       ],
@@ -177,7 +185,7 @@ class FootballFieldsSectionContent extends StatelessWidget {
             );
           },
           separatorBuilder: (context, index) => const VerticalSpacing(2),
-          itemCount: 10,
+          itemCount: fieldBloc.footballFieldModel.length,
         )
       ],
     );
